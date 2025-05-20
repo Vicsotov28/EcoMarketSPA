@@ -12,7 +12,7 @@ public class Producto {
     private Long id;
 
     private String nombre;
-    private String categoria;  // Ej: "Alimentos", "Limpieza"
+    private String categoria;
     private double precio;
     private int    stock;
     private String descripcion;

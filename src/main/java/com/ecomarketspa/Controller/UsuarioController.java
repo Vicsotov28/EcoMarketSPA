@@ -16,26 +16,26 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
-    // 1. GET: Listar todos los usuarios
+
     @GetMapping
     public List<Usuario> listarUsuarios() {
         return usuarioService.listarUsuarios();
     }
 
-    // 2. GET: Obtener usuario por ID
+
     @GetMapping("/{id}")
     public ResponseEntity<Usuario> obtenerUsuarioPorId(@PathVariable Long id) {
         Optional<Usuario> usuario = usuarioService.obtenerUsuarioPorId(id);
         return usuario.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
-    // 3. POST: Crear usuario
+
     @PostMapping
     public Usuario guardarUsuario(@RequestBody Usuario usuario) {
         return usuarioService.guardarUsuario(usuario);
     }
 
-    // 4. DELETE: Eliminar usuario
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarUsuario(@PathVariable Long id) {
         if (usuarioService.obtenerUsuarioPorId(id).isEmpty()) {

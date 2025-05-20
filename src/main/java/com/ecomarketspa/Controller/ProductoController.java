@@ -15,13 +15,13 @@ public class ProductoController {
     @Autowired
     private ProductoService productoService;
 
-    // 1. GET: Listar todos los productos
+
     @GetMapping
     public List<Producto> listarProductos() {
         return productoService.listarProductos();
     }
 
-    // 2. GET: Buscar producto por ID
+
     @GetMapping("/{id}")
     public ResponseEntity<Producto> obtenerProductoPorId(@PathVariable Long id) {
         return productoService.obtenerProductoPorId(id)
@@ -29,13 +29,11 @@ public class ProductoController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // 4. POST: Crear producto
     @PostMapping
     public Producto guardarProducto(@RequestBody Producto producto) {
         return productoService.guardarProducto(producto);
     }
 
-    // 5. DELETE: Eliminar producto
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarProducto(@PathVariable Long id) {
         if (productoService.obtenerProductoPorId(id).isEmpty()) {
